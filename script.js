@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Fixed Form Submission with PHP
 // FIXED FORM SUBMISSION - Works with GitHub Pages
+// Fixed Form Submission with Formspree
 const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const formMessage = document.getElementById('formMessage');
@@ -172,7 +173,7 @@ if (contactForm) {
                 formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 // Error
-                formMessage.className = 'form-5message error';
+                formMessage.className = 'form-message error';
                 formMessage.innerHTML = `
                     <i class="fas fa-exclamation-circle"></i> 
                     <strong>Submission Failed</strong><br>
