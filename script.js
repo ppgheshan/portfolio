@@ -120,15 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Fixed Form Submission with PHP
+// FIXED FORM SUBMISSION - Works with GitHub Pages
 const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const formMessage = document.getElementById('formMessage');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Disable button and show loading state
+        // Show loading state
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
@@ -137,23 +138,26 @@ if (contactForm) {
         formMessage.className = 'form-message';
         formMessage.style.display = 'none';
         
-        try {
-            // Get form data
-            const formData = new FormData(contactForm);
-            
-            // Send to PHP file
-            const response = await fetch('send_email.php', {
-                method: 'POST',
-                body: formData
-            });
-            
-            // Parse response
-            const result = await response.text();
-            
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        // Send to Formspree
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
             if (response.ok) {
-                // Success message
+                // Success
                 formMessage.className = 'form-message success';
-                formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you within 24 hours.';
+                formMessage.innerHTML = `
+                    <i class="fas fa-check-circle"></i> 
+                    <strong>Message Sent Successfully!</strong><br>
+                    I'll get back to you within 24 hours.
+                `;
                 formMessage.style.display = 'block';
                 
                 // Reset form
@@ -163,24 +167,35 @@ if (contactForm) {
                 setTimeout(() => {
                     formMessage.style.display = 'none';
                 }, 5000);
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
-                // Error message
-                formMessage.className = 'form-message error';
-                formMessage.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${result || 'Oops! Something went wrong. Please try again.'}`;
+                // Error
+                formMessage.className = 'form-5message error';
+                formMessage.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i> 
+                    <strong>Submission Failed</strong><br>
+                    Please try again or email me directly at ppgheshan@gmail.com
+                `;
                 formMessage.style.display = 'block';
             }
-        } catch (error) {
-            console.error('Network error:', error);
-            
-            // Network error message
+        })
+        .catch(error => {
+            // Network error
             formMessage.className = 'form-message error';
-            formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please check your connection and try again.';
+            formMessage.innerHTML = `
+                <i class="fas fa-exclamation-circle"></i> 
+                <strong>Network Error</strong><br>
+                Check your connection and try again.
+            `;
             formMessage.style.display = 'block';
-        } finally {
+        })
+        .finally(() => {
             // Restore button
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }
+        });
     });
 }
 
