@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/48/000000/portfolio.png">
-	<script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -459,7 +458,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Location</h4>
-                                <p>Colombo</p>
+                                <p>Sri Lanka</p>
                             </div>
                         </div>
                     </div>
@@ -482,115 +481,47 @@
 				<!-- Contact Form Section - WORKING VERSION -->
 				<!-- In index.html, replace the form section -->
 				<div class="contact-form">
-				    <h3 class="form-title"><i class="fas fa-paper-plane"></i> Send Message (Direct Email)</h3>
-				    
-				    <form id="contactForm" onsubmit="sendEmail(event)">
-				        
-				        <!-- Your Name -->
-				        <div class="form-group">
-				            <div class="input-icon">
-				                <i class="fas fa-user"></i>
-				            </div>
-				            <input type="text" id="name" placeholder="Your Name" required>
-				        </div>
-				        
-				        <!-- Your Email -->
-				        <div class="form-group">
-				            <div class="input-icon">
-				                <i class="fas fa-envelope"></i>
-				            </div>
-				            <input type="email" id="email" placeholder="Your Email" required>
-				        </div>
-				        
-				        <!-- Subject -->
-				        <div class="form-group">
-				            <div class="input-icon">
-				                <i class="fas fa-tag"></i>
-				            </div>
-				            <input type="text" id="subject" placeholder="Subject" required>
-				        </div>
-				        
-				        <!-- Message -->
-				        <div class="form-group">
-				            <div class="input-icon">
-				                <i class="fas fa-comment"></i>
-				            </div>
-				            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-				        </div>
-				        
-				        <button type="submit" class="btn btn-primary" id="submitBtn">
-				            <i class="fas fa-paper-plane"></i> Send Message
-				        </button>
-				        
-				        <div id="formMessage" class="form-message"></div>
-				    </form>
+					<h3 class="form-title"><i class="fas fa-paper-plane"></i> Send Me a Message</h3>
+					<form action="https://formspree.io/f/mjgggbpz" method="POST" id="contactForm">
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-user"></i>
+							</div>
+							<input type="text" name="name" placeholder="Your Name" required>
+						</div>
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-envelope"></i>
+							</div>
+							<input type="email" name="email" placeholder="Your Email" required>
+						</div>
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-tag"></i>
+							</div>
+							<input type="text" name="_subject" placeholder="Subject" required>
+						</div>
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-comment"></i>
+							</div>
+							<textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+						</div>
+						
+						<!-- Optional: Add a thank you page redirect -->
+						<input type="hidden" name="_next" value="https://ppgheshan.github.io/portfolio/thank-you.html">
+						<!-- Optional: Add your email as reply-to -->
+						<input type="hidden" name="_replyto" value="ppgheshan@gmail.com">
+						<!-- Optional: Add your name -->
+						<input type="hidden" name="_cc" value="ppgheshan@gmail.com">
+						
+						<button type="submit" class="btn btn-primary" id="submitBtn">
+							<i class="fas fa-paper-plane"></i>
+							Send Message
+						</button>
+						<div id="formMessage" class="form-message"></div>
+					</form>
 				</div>
-				
-				<script>
-				function sendEmail(e) {
-				    e.preventDefault();
-				    
-				    const submitBtn = document.getElementById('submitBtn');
-				    const formMessage = document.getElementById('formMessage');
-				    
-				    // Show loading
-				    const originalText = submitBtn.innerHTML;
-				    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-				    submitBtn.disabled = true;
-				    
-				    // Get form values
-				    const name = document.getElementById('name').value;
-				    const email = document.getElementById('email').value;
-				    const subject = document.getElementById('subject').value;
-				    const message = document.getElementById('message').value;
-				    
-				    // Send using SMTP.js (free service)
-				    Email.send({
-				        SecureToken: "your-token-here", // Get free token from smtpjs.com
-				        To: 'ppgheshan@gmail.com',
-				        From: 'noreply@yourportfolio.com',
-				        Subject: `Portfolio Message: ${subject}`,
-				        Body: `
-				            Name: ${name}
-				            Email: ${email}
-				            Subject: ${subject}
-				            Message: ${message}
-				            
-				            ---
-				            Sent from your portfolio website
-				        `
-				    }).then(
-				        response => {
-				            if (response === 'OK') {
-				                formMessage.className = 'form-message success';
-				                formMessage.innerHTML = `
-				                    <i class="fas fa-check-circle"></i> 
-				                    <strong>✓ Email Sent Successfully!</strong><br>
-				                    <small>Check your inbox for confirmation.</small>
-				                `;
-				                formMessage.style.display = 'block';
-				                document.getElementById('contactForm').reset();
-				            } else {
-				                throw new Error('Failed to send');
-				            }
-				        }
-				    ).catch(error => {
-				        formMessage.className = 'form-message error';
-				        formMessage.innerHTML = `
-				            <i class="fas fa-exclamation-circle"></i> 
-				            <strong>✗ Could not send email</strong><br>
-				            <small>Please email directly: 
-				                <a href="mailto:ppgheshan@gmail.com?subject=Portfolio%20Message&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0AMessage:%20${encodeURIComponent(message)}" 
-				                   class="text-link">Click here to email me</a>
-				            </small>
-				        `;
-				        formMessage.style.display = 'block';
-				    }).finally(() => {
-				        submitBtn.innerHTML = originalText;
-				        submitBtn.disabled = false;
-				    });
-				}
-				</script>
             </div>
         </div>
     </section>
@@ -698,4 +629,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
