@@ -479,34 +479,28 @@
                 </div>
                 <!-- In index.html, replace the form section -->
 				<!-- Contact Form Section - WORKING VERSION -->
+				<!-- In index.html, replace the form section -->
 				<div class="contact-form">
 					<h3 class="form-title"><i class="fas fa-paper-plane"></i> Send Me a Message</h3>
-					
-					<!-- Formspree Form with YOUR form ID -->
-					<form action="https://formspree.io/f/2915790409143680765" method="POST" id="contactForm">
-						
-						<!-- Required Fields -->
+					<form action="https://formspree.io/f/mjgggbpz" method="POST" id="contactForm">
 						<div class="form-group">
 							<div class="input-icon">
 								<i class="fas fa-user"></i>
 							</div>
 							<input type="text" name="name" placeholder="Your Name" required>
 						</div>
-						
 						<div class="form-group">
 							<div class="input-icon">
 								<i class="fas fa-envelope"></i>
 							</div>
 							<input type="email" name="email" placeholder="Your Email" required>
 						</div>
-						
 						<div class="form-group">
 							<div class="input-icon">
 								<i class="fas fa-tag"></i>
 							</div>
-							<input type="text" name="subject" placeholder="Subject" required>
+							<input type="text" name="_subject" placeholder="Subject" required>
 						</div>
-						
 						<div class="form-group">
 							<div class="input-icon">
 								<i class="fas fa-comment"></i>
@@ -514,21 +508,17 @@
 							<textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 						</div>
 						
-						<!-- Formspree Configuration (IMPORTANT) -->
+						<!-- Optional: Add a thank you page redirect -->
+						<input type="hidden" name="_next" value="https://yourusername.github.io/thank-you.html">
+						<!-- Optional: Add your email as reply-to -->
 						<input type="hidden" name="_replyto" value="ppgheshan@gmail.com">
-						<input type="hidden" name="_subject" value="New Message from Portfolio">
-						<input type="hidden" name="_format" value="plain">
-						<input type="text" name="_gotcha" style="display:none"> <!-- Anti-spam -->
-						
-						<!-- Redirect after submit (optional) -->
-						<input type="hidden" name="_next" value="https://yourusername.github.io/portfolio/#contact">
+						<!-- Optional: Add your name -->
+						<input type="hidden" name="_cc" value="ppgheshan@gmail.com">
 						
 						<button type="submit" class="btn btn-primary" id="submitBtn">
 							<i class="fas fa-paper-plane"></i>
 							Send Message
 						</button>
-						
-						<!-- Success/Error Message Container -->
 						<div id="formMessage" class="form-message"></div>
 					</form>
 				</div>
