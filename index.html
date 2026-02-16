@@ -10,9 +10,6 @@
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/48/000000/portfolio.png">
 </head>
 <body>
-    <!-- Particles Container -->
-    <div class="particles" id="particles"></div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -78,27 +75,16 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="profile-container">
-                        <!-- Gradient Orb Background -->
-                        <div class="profile-orb"></div>
-                        
-                        <!-- Decorative Rings -->
-                        <div class="ring-outer"></div>
-                        <div class="ring-middle"></div>
-                        <div class="ring-inner"></div>
-                        
-                        <!-- Profile Image -->
+                    <div class="profile-frame">
+                        <div class="frame-circle"></div>
+                        <div class="frame-circle2"></div>
+                        <div class="frame-circle3"></div>
                         <img src="dp.jpg" 
-                             alt="Gayanthaka" class="profile-img-modern" id="profileImage">
-                        
-                        <!-- Status Badge -->
-                        <div class="status-badge-modern">
-                            <span class="status-dot-modern"></span>
-                            <span class="status-text">
-                                Seeking Internship
-                                <small>⚡</small>
-                            </span>
-                        </div>
+                             alt="Gayanthaka" class="profile-img">
+                    </div>
+                    <div class="status-badge">
+                        <div class="status-dot"></div>
+                        <span><i class="fas fa-briefcase"></i> Seeking Internship</span>
                     </div>
                 </div>
             </div>
@@ -107,6 +93,12 @@
                     <i class="fas fa-chevron-down"></i>
                 </a>
             </div>
+        </div>
+        <div class="hero-bg-elements">
+            <div class="bg-circle"></div>
+            <div class="bg-circle"></div>
+            <div class="bg-circle"></div>
+            <div class="bg-grid"></div>
         </div>
     </section>
 
@@ -485,48 +477,51 @@
                         </a>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3 class="form-title"><i class="fas fa-paper-plane"></i> Send Me a Message</h3>
-                    <form action="https://formspree.io/f/mjgggbpz" method="POST" id="contactForm">
-                        <div class="form-group">
-                            <div class="input-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-icon">
-                                <i class="fas fa-tag"></i>
-                            </div>
-                            <input type="text" name="_subject" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-icon">
-                                <i class="fas fa-comment"></i>
-                            </div>
-                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        
-                        <!-- Optional: Add a thank you page redirect -->
-                        <input type="hidden" name="_next" value="https://ppgheshan.github.io/portfolio/thank-you.html">
-                        <!-- Optional: Add your email as reply-to -->
-                        <input type="hidden" name="_replyto" value="ppgheshan@gmail.com">
-                        <!-- Optional: Add your name -->
-                        <input type="hidden" name="_cc" value="ppgheshan@gmail.com">
-                        
-                        <button type="submit" class="btn btn-primary" id="submitBtn">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                        <div id="formMessage" class="form-message"></div>
-                    </form>
-                </div>
+                <!-- In index.html, replace the form section -->
+				<!-- Contact Form Section - WORKING VERSION -->
+				<!-- In index.html, replace the form section -->
+				<div class="contact-form">
+					<h3 class="form-title"><i class="fas fa-paper-plane"></i> Send Me a Message</h3>
+					<form action="https://formspree.io/f/mjgggbpz" method="POST" id="contactForm">
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-user"></i>
+							</div>
+							<input type="text" name="name" placeholder="Your Name" required>
+						</div>
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-envelope"></i>
+							</div>
+							<input type="email" name="email" placeholder="Your Email" required>
+						</div>
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-tag"></i>
+							</div>
+							<input type="text" name="_subject" placeholder="Subject" required>
+						</div>
+						<div class="form-group">
+							<div class="input-icon">
+								<i class="fas fa-comment"></i>
+							</div>
+							<textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+						</div>
+						
+						<!-- Optional: Add a thank you page redirect -->
+						<input type="hidden" name="_next" value="https://ppgheshan.github.io/portfolio/thank-you.html">
+						<!-- Optional: Add your email as reply-to -->
+						<input type="hidden" name="_replyto" value="ppgheshan@gmail.com">
+						<!-- Optional: Add your name -->
+						<input type="hidden" name="_cc" value="ppgheshan@gmail.com">
+						
+						<button type="submit" class="btn btn-primary" id="submitBtn">
+							<i class="fas fa-paper-plane"></i>
+							Send Message
+						</button>
+						<div id="formMessage" class="form-message"></div>
+					</form>
+				</div>
             </div>
         </div>
     </section>
@@ -634,3 +629,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
